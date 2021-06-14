@@ -48,3 +48,4 @@ Live DH data puts these cards at `59.1%`, `58.3%`, and `52.2%` (but be careful o
 
 * [ ] support for played winrate or other stats
 * [ ] support for displaying played count to highlight low sample sizes
+* [ ] package this up to a single binary so it's easier to run without a bunch of steps
