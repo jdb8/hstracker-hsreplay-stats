@@ -10,10 +10,24 @@ This is a quick script created to generate a compatible `cardtier.json` for use 
 
 ## Usage
 
+### tl;dr
+
+With required dependencies installed (git, latest node)
+
+```bash
+git clone git@github.com:jdb8/hstracker-hsreplay-stats.git
+cd hstracker-hsreplay-stats
+npm install
+node index.mjs
+ln -sf "$PWD/cardtier.json" "/Users/$USER/Library/Application Support/HSTracker/arena"
+````
+
+### More details
+
 1. Clone or download this repo
 1. Install [latest node](https://nodejs.org/en/)
 1. `cd` into the cloned repo and install dependencies with `npm install`
-1. Run `node index.mjs` to pull latest arena stat info and create a local `log_data.json` file
+1. Run `node index.mjs` to pull latest arena stat info and create a local `cardtier.json` file
 1. (optional) back up your existing `cardtier.json` inside `/Users/$USER/Library/Application Support/HSTracker/arena`
 1. Copy the `cardtier.json` file into `/Users/$USER/Library/Application Support/HSTracker/arena`, or symlink it for convenience
 1. Restart HSTracker
