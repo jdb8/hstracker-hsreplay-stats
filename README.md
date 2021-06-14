@@ -24,7 +24,11 @@ The newly-generated `cardtier.json` will now be used by HSTracker to display "de
 
 Due to the way HSTracker currently displays scores, the deck winrates currently are displayed multipled by 10. For example, if a card has a deck winrate of `62.1%`, HSTracker will display this as a "score" of `621`.
 
-* TODO: screenshot this
+Example:
+
+![image](https://user-images.githubusercontent.com/643295/121826921-14f57980-cc6f-11eb-9965-37357d415aa7.png)
+
+Live DH data puts these cards at `59.1%`, `58.3%`, and `52.2%` (but be careful of the sample size, which isn't displayed! Use your best judgement).
 
 ## Future functionality
 
