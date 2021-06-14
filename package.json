@@ -1,0 +1,13 @@
+{
+  "name": "hstracker-arena-stats",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "author": "Joe Bateson <joe@joebateson.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "volta": {
+    "node": "16.3.0"
+  }
+}
