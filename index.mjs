@@ -90,7 +90,7 @@ async function main() {
 
 async function getArenaDataForClass() {
     const arenaData = await getData(
-        'https://hsreplay.net/analytics/query/card_list_free/?GameType=ARENA&TimeRange=CURRENT_EXPANSION',
+        'https://hsreplay.net/analytics/query/card_list_free/?GameType=ARENA&TimeRange=CURRENT_PATCH',
         'arena_data.json'
     );
     return arenaData.series.data;
