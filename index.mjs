@@ -26,7 +26,7 @@ async function getData(url) {
 // }
 
 async function main() {
-    const allCards = await getData('https://api.hearthstonejson.com/v1/84593/enUS/cards.json', 'cards.json');
+    const allCards = await getData('https://api.hearthstonejson.com/v1/latest/enUS/cards.json', 'cards.json');
     const cardIdMap = new Map();
     allCards.forEach(({ name, id, dbfId }) => {
         cardIdMap.set(dbfId, { id, name, dbfId });
