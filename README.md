@@ -30,7 +30,7 @@ cd hstracker-hsreplay-stats
 npm install
 node index.mjs
 del "%appdata%/HearthstoneDeckTracker\Plugins\data\cardtier.json"
-cmd /c mklink "%appdata%/HearthstoneDeckTracker\Plugins\data\cardtier.json" "cardtier.json"
+mklink /h "%appdata%/HearthstoneDeckTracker\Plugins\data\cardtier.json" "cardtier.json"
 ```
 
 ### More details
