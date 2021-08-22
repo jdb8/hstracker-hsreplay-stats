@@ -14,13 +14,24 @@ This is a quick script created to generate a compatible `cardtier.json` for use 
 
 With required dependencies installed (git, latest node)
 
+### OSX or Git Bash
 ```bash
 git clone git@github.com:jdb8/hstracker-hsreplay-stats.git
 cd hstracker-hsreplay-stats
 npm install
 node index.mjs
 ln -sf "$PWD/cardtier.json" "/Users/$USER/Library/Application Support/HSTracker/arena"
-````
+```
+
+### Windows PowerShell
+``` Open PowerShell
+git clone git@github.com:jdb8/hstracker-hsreplay-stats.git
+cd hstracker-hsreplay-stats
+npm install
+node index.mjs
+del "%appdata%/HearthstoneDeckTracker\Plugins\data\cardtier.json"
+cmd /c mklink "%appdata%/HearthstoneDeckTracker\Plugins\data\cardtier.json" "cardtier.json"
+```
 
 ### More details
 
