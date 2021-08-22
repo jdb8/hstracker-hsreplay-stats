@@ -2,28 +2,18 @@
 import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
+import _debug from 'debug';
+import logSymbols from 'log-symbols';
+
+const debug = _debug('hstracker-hsreplay-stats');
+
+const CARD_TIER_FILENAME = 'cardtier.json';
 
 async function getData(url) {
     const resp = await fetch(url);
     const json = await resp.json();
     return JSON.parse(JSON.stringify(json, null, 2));
 }
-
-// async function getDataCached(url, filename) {
-//     const localFilePath = path.resolve('./data', filename);
-//     let data;
-//     if (fs.existsSync(localFilePath)) {
-//         console.log('loading from disk', localFilePath);
-//         data = fs.readFileSync(localFilePath, 'utf8');
-//     } else {
-//         console.log('fetching fresh', url);
-//         data = await fetch(url).then(r => r.json()).then(json => JSON.stringify(json, null, 2));
-//         fs.mkdirSync('data', {recursive: true});
-//         fs.writeFileSync(localFilePath, data, 'utf8');
-//     }
-
-//     return JSON.parse(data);
-// }
 
 async function main() {
     const allCards = await getData('https://api.hearthstonejson.com/v1/latest/enUS/cards.json', 'cards.json');
@@ -58,7 +48,7 @@ async function main() {
         }
     });
 
-    console.log({ statsByHeroAndDbfId });
+    debug({ statsByHeroAndDbfId });
 
     allIds.forEach((dbfId) => {
         const cardData = cardIdMap.get(dbfId);
@@ -84,7 +74,7 @@ async function main() {
         });
     });
 
-    fs.writeFileSync('cardtier.json', JSON.stringify(logData, null, 2));
+    fs.writeFileSync(CARD_TIER_FILENAME, JSON.stringify(logData, null, 2));
     return logData;
 }
 
@@ -96,4 +86,14 @@ async function getArenaDataForClass() {
     return arenaData.series.data;
 }
 
-console.log(JSON.stringify(await main(), null, 2));
+const data = await main();
+debug(data);
+
+console.log(logSymbols.success, `Downloaded scores for ${data.length} cards to ${CARD_TIER_FILENAME}`);
+console.log(logSymbols.info, 'Run (only necessary once):')
+console.log(
+    logSymbols.info,
+    `    ln -sf "$PWD/${CARD_TIER_FILENAME}" "/Users/$USER/Library/Application Support/HSTracker/arena"`
+);
+console.log(logSymbols.warning, 'Don’t forget to restart HSTracker!');
+
