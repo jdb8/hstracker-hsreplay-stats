@@ -14,13 +14,24 @@ This is a quick script created to generate a compatible `cardtier.json` for use 
 
 With required dependencies installed (git, latest node)
 
+### OSX or Git Bash
 ```bash
 git clone git@github.com:jdb8/hstracker-hsreplay-stats.git
 cd hstracker-hsreplay-stats
 npm install
 node index.mjs
 ln -sf "$PWD/cardtier.json" "/Users/$USER/Library/Application Support/HSTracker/arena"
-````
+```
+
+### Windows PowerShell
+``` Open PowerShell as admin
+git clone git@github.com:jdb8/hstracker-hsreplay-stats.git
+cd hstracker-hsreplay-stats
+npm install
+node index.mjs
+del "%appdata%/HearthstoneDeckTracker\Plugins\data\cardtier.json"
+mklink /h "%appdata%/HearthstoneDeckTracker\Plugins\data\cardtier.json" "cardtier.json"
+```
 
 ### More details
 
@@ -31,6 +42,7 @@ ln -sf "$PWD/cardtier.json" "/Users/$USER/Library/Application Support/HSTracker/
 1. (optional) back up your existing `cardtier.json` inside `/Users/$USER/Library/Application Support/HSTracker/arena`
 1. Copy the `cardtier.json` file into `/Users/$USER/Library/Application Support/HSTracker/arena`, or symlink it for convenience
 1. Restart HSTracker
+1. To refresh the tier list, just re-run index.mjs until issue 1 is resolved..
 
 The newly-generated `cardtier.json` will now be used by HSTracker to display "deck winrate" in place of arena tierlist score.
 
