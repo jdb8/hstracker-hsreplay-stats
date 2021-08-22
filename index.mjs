@@ -59,12 +59,13 @@ async function main() {
 
         const { id, name } = cardData;
 
-        const allValue = statsByHeroAndDbfId.get(JSON.stringify(['ALL', dbfId]));
         const value = heros.map((h) => {
             const key = JSON.stringify([h, dbfId]);
-            // Multiply by 10 because HSTracker can only display 3 digit numbers
-            // So percentages like 62.1% will display as 621, or -1 if missing
-            return `${Math.round(statsByHeroAndDbfId.get(key) * 10 || -1)}`;
+            const value = statsByHeroAndDbfId.get(key);
+            if (!value) {
+                return -1;
+            }
+            return Math.round(value * 10) / 10;
         });
 
         logData.push({
